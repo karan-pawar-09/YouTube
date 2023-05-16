@@ -88,8 +88,8 @@ WantedBy=multi-user.target
 Then enable the service:
 ```bash
 sudo systemctl daemon-reload
-sudo systemctl start helloworld
-sudo systemctl enable helloworld
+sudo systemctl start backend
+sudo systemctl enable backend
 ```
 Check if the app is running with 
 ```bash
@@ -113,14 +113,14 @@ sudo nano /etc/nginx/sites-available/default
 ```
 Add the following code at the top of the file (below the default comments)
 ```bash
-upstream flaskhelloworld {
+upstream flaskbackend {
     server 127.0.0.1:8000;
 }
 ```
 Add a proxy_pass to flaskhelloworld atlocation /
 ```bash
 location / {
-    proxy_pass http://flaskhelloworld;
+    proxy_pass http://flaskbackend;
 }
 ```
 Restart Nginx 
