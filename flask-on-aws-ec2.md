@@ -8,8 +8,8 @@ Activate the new virtual environment in a new directory
 
 Create directory
 ```bash
-mkdir helloworld
-cd helloworld
+mkdir backend
+cd backend
 ```
 Create the virtual environment
 ```bash
@@ -69,7 +69,7 @@ Install — tells systemd at which moment during boot process this service shoul
 With that said, create an unit file in the /etc/systemd/system directory
 	
 ```bash
-sudo nano /etc/systemd/system/helloworld.service
+sudo nano /etc/systemd/system/backend.service
 ```
 Then add this into the file.
 ```bash
@@ -79,8 +79,8 @@ After=network.target
 [Service]
 User=ubuntu
 Group=www-data
-WorkingDirectory=/home/ubuntu/helloworld
-ExecStart=/home/ubuntu/helloworld/venv/bin/gunicorn -b localhost:8000 app:app
+WorkingDirectory=/home/ubuntu/backend
+ExecStart=/home/ubuntu/backend/venv/bin/gunicorn -b localhost:8000 app:app
 Restart=always
 [Install]
 WantedBy=multi-user.target
@@ -88,8 +88,8 @@ WantedBy=multi-user.target
 Then enable the service:
 ```bash
 sudo systemctl daemon-reload
-sudo systemctl start helloworld
-sudo systemctl enable helloworld
+sudo systemctl start backend
+sudo systemctl enable backend
 ```
 Check if the app is running with 
 ```bash
