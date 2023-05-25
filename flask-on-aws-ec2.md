@@ -113,14 +113,14 @@ sudo nano /etc/nginx/sites-available/default
 ```
 Add the following code at the top of the file (below the default comments)
 ```bash
-upstream flaskhelloworld {
+upstream backend {
     server 127.0.0.1:8000;
 }
 ```
-Add a proxy_pass to flaskhelloworld atlocation /
+Add a proxy_pass to backend atlocation /
 ```bash
 location / {
-    proxy_pass http://flaskhelloworld;
+    proxy_pass http://backend;
 }
 ```
 Restart Nginx 
